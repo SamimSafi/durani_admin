@@ -439,6 +439,32 @@ const ProjectCategoriesAPI = {
   
 };
 
+// ProjectCategories API calls
+const ProductCategoryAPI = {
+    fetchProductCategory: async () => {
+    const response = await axiosInstance.get('/product-categories');
+    return response.data;
+  },
+  createProductCategory: async (ProductCategoryData) => {
+    const response = await axiosInstance.post('/product-categories', ProductCategoryData);
+    return response.data;
+  },
+   updateProductCategory: async (id, ProductCategoryData) => {
+    const response = await axiosInstance.put(`/product-categories/${id}`, ProductCategoryData);
+    return response.data;
+  },
+  deleteProductCategory: async (ProductCategoryId) => {
+    const response = await axiosInstance.delete(`/product-categories/${ProductCategoryId}`);
+    return response.data;
+  },
+  getProductCategory: async (ProductCategoryId) => {
+    const response = await axiosInstance.get(`/product-categories/${ProductCategoryId}`);
+    return response.data;
+  },
+  
+};
+
+
 const ProjectGoalsAPI = {
     fetchProjectGoals: async (projectId) => {
     const response = await axiosInstance.get(`/project-goals/project/${projectId}`,{isActive:true,projectId:projectId});
@@ -779,6 +805,7 @@ const agent = {
  Contact: ContactAPI,
  WhyChooseUs: WhyChooseUsAPI,
  Content: ContentAPI,
+ ProductCategory: ProductCategoryAPI,
 };
 
 export default agent;

@@ -49,6 +49,12 @@ const ProjectSlidersForm = lazy(() => import('../views/projectSliders/ProjectSli
 const ProjectCategoriesList = lazy(() => import('../views/projectCategories/ProjectCategoriesList'));
 const ProjectCategoriesForm = lazy(() => import('../views/projectCategories/ProjectCategoriesForm'));
 
+const ProductCategoryList = lazy(() => import('../views/productCategory/ProductCategoryList'));
+const ProductCategoryForm = lazy(() => import('../views/productCategory/ProductCategoryForm'));
+
+const ProductList = lazy(() => import('../views/product/ProductList'));
+const ProductForm = lazy(() => import('../views/product/ProductForm'));
+
 const SuccessSnapshotsList = lazy(() => import('../views/successSnapshots/SuccessSnapshotsList'));
 const SuccessSnapshotsForm = lazy(() => import('../views/successSnapshots/SuccessSnapshotsForm'));
 
@@ -117,6 +123,7 @@ const Router = [
           { path: '/projectCategories', element: <ProjectCategoriesList /> },
           { path: '/projectCategories/create', element: <ProjectCategoriesForm /> },
           { path: '/projectCategories/edit/:id', element: <ProjectCategoriesForm /> },
+         
           { path: '/projectGoals/:projectId', element: <ProjectGoalsList /> },
           { path: '/projectGoals/create/:projectId', element: <ProjectGoalsForm /> },
           { path: '/projectGoals/edit/:id', element: <ProjectGoalsForm /> },
@@ -148,6 +155,12 @@ const Router = [
           { path: '/content', element: <ContentList /> },
           { path: '/content/create', element: <ContentForm /> },
           { path: '/content/edit/:id', element: <ContentForm /> },
+          { path: '/productCategory', element: <ProductCategoryList /> },
+          { path: '/productCategory/create', element: <ProductCategoryForm /> },
+          { path: '/productCategory/edit/:id', element: <ProductCategoryForm /> },
+          { path: '/product', element: <ProductList /> },
+          { path: '/product/create', element: <ProductForm /> },
+          { path: '/product/edit/:id', element: <ProductForm /> },
           { path: '*', element: <Navigate to="/auth/404" /> },
         ],
       },

@@ -52,6 +52,18 @@ const Menuitems = [
   },
   {
     id: uniqueId(),
+    title: 'Product',
+    icon: IconHistory,
+    href: '/product',
+  },
+  {
+    id: uniqueId(),
+    title: 'Product Category',
+    icon: IconHistory,
+    href: '/productCategory',
+  },
+  {
+    id: uniqueId(),
     title: 'Leadership',
     icon: IconAward,
     href: '/leadership',
