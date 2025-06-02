@@ -12,7 +12,6 @@ import {
 } from '@mui/material';
 import { Delete, Edit } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
-import useProductStore from '../../context/productStore';
 import ImageDisplay from '../../components/ImageDisplay';
 import { useEffect } from 'react';
 import useProductCategoryStore from '../../context/productCategoryStore';

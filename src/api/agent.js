@@ -439,6 +439,47 @@ const ProjectCategoriesAPI = {
   
 };
 
+// Product API calls
+const ProductAPI = {
+    fetchProduct: async () => {
+    const response = await axiosInstance.get('/products');
+    return response.data;
+  },
+  createProduct: async (ProductData) => {
+   const response = await axiosInstance.post('/products', ProductData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    return response.data;
+  },
+   updateProduct: async (id, ProductData) => {
+    const response = await axiosInstance.put(`/products/${id}`, ProductData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    return response.data;
+  },
+  deleteProduct: async (ProductId) => {
+    const response = await axiosInstance.delete(`/products/${ProductId}`);
+    return response.data;
+  },
+  getProduct: async (ProductId) => {
+    const response = await axiosInstance.get(`/products/${ProductId}`);
+    return response.data;
+  },
+   activateProduct: async (id) => {
+    const response = await axiosInstance.post(`/products/${id}/activate`);
+    return response.data;
+  },
+  deactivateProduct: async (id) => {
+    const response = await axiosInstance.post(`/products/${id}/deactivate`);
+    return response.data;
+  },
+  
+};
+
 // ProjectCategories API calls
 const ProductCategoryAPI = {
     fetchProductCategory: async () => {
@@ -806,6 +847,7 @@ const agent = {
  WhyChooseUs: WhyChooseUsAPI,
  Content: ContentAPI,
  ProductCategory: ProductCategoryAPI,
+ Product: ProductAPI,
 };
 
 export default agent;

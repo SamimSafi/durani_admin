@@ -61,7 +61,7 @@ const ProductForm = () => {
             setValue('image', imageFile);
           } else {
             toast.error('Product record not found.');
-            navigate(`/product/${product.categoryId}`);
+            navigate(`/product`);
           }
         } catch (error) {
           toast.error('Failed to fetch product data.');
@@ -92,7 +92,7 @@ const ProductForm = () => {
         await createProduct(payload);
       }
       toast.success(`Product ${isEdit ? 'updated' : 'created'} successfully.`);
-      navigate(`/product/${data.categoryId}`);
+      navigate(`/product`);
     } catch (error) {
       toast.error(`Failed to ${isEdit ? 'update' : 'create'} product record.`);
     }

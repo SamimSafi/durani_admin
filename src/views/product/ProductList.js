@@ -11,12 +11,11 @@ import { toast } from 'react-toastify';
 import LoadingSkeleton from '../../components/LoadingSkeleton';
 import ProductTable from './ProductTable';
 import ConfirmationDialog from '../../components/ConfirmationDialog';
-import useProductStore from '../../context/productStore';
 import productService from '../../services/productService';
+import useProductStore from '../../context/productStore';
 
 const ProductList = () => {
   const { Product, loading, hasMore, deleteProduct, fetchProduct } = useProductStore();
-    const { projectId } = useParams();
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
   const [sortOrder, setSortOrder] = useState('asc');
@@ -28,7 +27,7 @@ const ProductList = () => {
   const [deleteId, setDeleteId] = useState(null);
 
   useEffect(() => {
-    fetchProduct(projectId);
+    fetchProduct();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fetchProduct]);
 
@@ -115,7 +114,7 @@ const ProductList = () => {
         <Box sx={{ display: 'flex', gap: 2 }}>
           <Button
             variant="contained"
-            onClick={() => navigate(`/product/create/${projectId}`)}
+            onClick={() => navigate(`/product/create`)}
           >
             Create New Product
           </Button>
