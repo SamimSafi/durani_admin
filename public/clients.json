@@ -1,0 +1,15 @@
+[
+    {
+        "id": "1",
+        "name": "Acme Corp",
+        "logo": "https://example.com/logos/acme.png",
+        "description": "Leading provider of innovative solutions."
+      },
+      {
+        "id": "2",
+        "name": "Beta Industries",
+        "logo": "",
+        "description": "Specializing in sustainable technologies."
+      }
+  ]
+  
