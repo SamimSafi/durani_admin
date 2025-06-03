@@ -1,5 +1,5 @@
 import  { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {
   Box,
   Button,
@@ -78,7 +78,7 @@ const ProductList = () => {
   const confirmDelete = async () => {
     try {
       await deleteProduct(deleteId);
-      fetchProduct(projectId);
+      fetchProduct();
     } catch (error) {
       toast.error('Failed to delete Product.');
     } finally {
