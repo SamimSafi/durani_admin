@@ -20,11 +20,10 @@ const useProductStore = create((set) => ({
 
   // Create a new product record
 createProduct: async (data) => {
-    console.log('createProduct called with data:', data);
     try {
       const formData = new FormData();
       Object.entries(data).forEach(([key, value]) => {
-        if (key === 'file' && value) {
+        if (key === 'imageFile' && value) {
           formData.append(key, value); // Append File object
         } else if (value !== undefined && value !== null) {
           formData.append(key, value);
@@ -32,10 +31,8 @@ createProduct: async (data) => {
       });
       console.log('FormData prepared:', formData);
       const response = await agent.Product.createProduct(formData);
-      console.log('API response:', response);
       return response;
     } catch (error) {
-      console.error('createProduct error:', error);
       const errorMessage = error.response?.data?.message || 'Failed to create product record';
       toast.error(errorMessage);
       throw error;
@@ -48,7 +45,7 @@ createProduct: async (data) => {
     try {
       const formData = new FormData();
       Object.entries(data).forEach(([key, value]) => {
-        if (key === 'file' && value) {
+        if (key === 'imageFile' && value) {
           formData.append(key, value);
         } else if (value !== undefined) {
           formData.append(key, value);

@@ -42,7 +42,7 @@ const ProductForm = () => {
       categoryId: '',
       name: '',
       description: '',
-      image: null,
+      imageFile: null,
     },
   });
 
@@ -57,8 +57,8 @@ const ProductForm = () => {
             setValue('categoryId', product.categoryId || '');
             setValue('name', product.name || '');
             setValue('description', product.description || '');
-            const imageFile = await urlToFileObject(product.image, 'image');
-            setValue('image', imageFile);
+            const imageFile = await urlToFileObject(product.image, 'imageFile');
+            setValue('imageFile', imageFile);
           } else {
             toast.error('Product record not found.');
             navigate(`/product`);
@@ -74,7 +74,7 @@ const ProductForm = () => {
 
   const onSubmit = async (data) => {
     try {
-      if (!isEdit && !data.image) {
+      if (!isEdit && !data.imageFile) {
         toast.error('Please upload an image.');
         return;
       }
@@ -83,7 +83,7 @@ const ProductForm = () => {
         categoryId: data.categoryId,
         name: data.name,
         description: data.description,
-        image: data.image,
+        imageFile: data.imageFile,
       };
 
       if (isEdit) {
@@ -104,89 +104,103 @@ const ProductForm = () => {
         <Typography variant="h4" gutterBottom>
           {isEdit ? 'Edit Product' : 'Create Product'}
         </Typography>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <Stack spacing={3}>
-            {/* Category ID Dropdown */}
-            <Controller
-              name="categoryId"
-              control={control}
-              rules={{ required: 'Category is required' }}
-              render={({ field }) => (
-                <TextField
-                  {...field}
-                  select
-                  label="Category"
-                  disabled={isSubmitting || loading}
-                  error={!!errors.categoryId}
-                  helperText={errors.categoryId?.message}
-                  fullWidth
-                >
-                  {loading ? (
-                    <MenuItem disabled>Loading categories...</MenuItem>
-                  ) : ProductCategory.length === 0 ? (
-                    <MenuItem disabled>No categories available</MenuItem>
-                  ) : (
-                    ProductCategory.map((project) => (
-                      <MenuItem key={project.id} value={project.id}>
-                        {project.name} (ID: {project.id})
-                      </MenuItem>
-                    ))
-                  )}
-                </TextField>
-              )}
-            />
+      <form onSubmit={handleSubmit(onSubmit)}>
+  <Stack spacing={3}>
+    {/* Category ID Dropdown */}
+    <Controller
+      name="categoryId"
+      control={control}
+      rules={{ required: 'Category is required' }}
+      render={({ field }) => (
+        <TextField
+          {...field}
+          select
+          label="Category"
+          disabled={isSubmitting || loading}
+          error={!!errors.categoryId}
+          helperText={errors.categoryId?.message}
+          fullWidth
+        >
+          {loading ? (
+            <MenuItem disabled>Loading categories...</MenuItem>
+          ) : ProductCategory.length === 0 ? (
+            <MenuItem disabled>No categories available</MenuItem>
+          ) : (
+            ProductCategory.map((project) => (
+              <MenuItem key={project.id} value={project.id}>
+                {project.name} (ID: {project.id})
+              </MenuItem>
+            ))
+          )}
+        </TextField>
+      )}
+    />
 
-            {/* Name Field */}
-            <TextField
-              label="Name"
-              {...register('name', { required: 'Name is required' })}
-              fullWidth
-              disabled={isSubmitting}
-              error={!!errors.name}
-              helperText={errors.name?.message}
-            />
+    {/* Name Field */}
+    <Controller
+      name="name"
+      control={control}
+      rules={{ required: 'Name is required' }}
+      render={({ field }) => (
+        <TextField
+          label="Name"
+          {...field}
+          fullWidth
+          disabled={isSubmitting}
+          error={!!errors.name}
+          helperText={errors.name?.message}
+        />
+      )}
+    />
 
-            {/* Description Field */}
-            <TextField
-              label="Description"
-              {...register('description', { required: 'Description is required' })}
-              fullWidth
-              multiline
-              rows={4}
-              disabled={isSubmitting}
-              error={!!errors.description}
-              helperText={errors.description?.message}
-            />
+    {/* Description Field */}
+    <Controller
+      name="description"
+      control={control}
+      rules={{ required: 'Description is required' }}
+      render={({ field }) => (
+        <TextField
+          label="Description"
+          {...field}
+          fullWidth
+          multiline
+          rows={4}
+          disabled={isSubmitting}
+          error={!!errors.description}
+          helperText={errors.description?.message}
+        />
+      )}
+    />
 
-            {/* Image Upload */}
-            <FileUpload
-              control={control}
-              name="image"
-              title={isEdit ? 'Update Image' : 'Upload Image'}
-              isEdit={isEdit}
-              isSubmitting={isSubmitting}
-              handleFileChange={(e, onChange) => {
-                const file = e.target.files[0] || e.dataTransfer.files[0];
-                if (file) onChange(file);
-              }}
-              existingImage={isEdit ? productData?.image : null}
-            />
+    {/* Image Upload */}
+    <FileUpload
+      control={control}
+      name="imageFile"
+      title={isEdit ? 'Update Image' : 'Upload Image'}
+      isEdit={isEdit}
+      isSubmitting={isSubmitting}
+      handleFileChange={(e, onChange) => {
+        const file = e.target.files[0] || e.dataTransfer.files[0];
+        if (file) onChange(file);
+      }}
+      existingImage={isEdit ? productData?.imageFile : null}
+    />
 
-            {/* Form Actions */}
-            <Box sx={{ display: 'flex', gap: 2, pt: 2 }}>
-              <Button type="submit" variant="contained" color="primary" disabled={isSubmitting}>
-                {isSubmitting ? 'Saving...' : isEdit ? 'Update Product' : 'Create Product'}
-              </Button>
-              <Button
-                variant="outlined"
-                onClick={() => navigate(`/product`)}
-                disabled={isSubmitting}
-              >
-                Cancel
-              </Button>
-            </Box>
-          </Stack>
-        </form>
+    {/* Form Actions */}
+    <Box sx={{ display: 'flex', gap: 2, pt: 2 }}>
+      <Button type="submit" variant="contained" color="primary" disabled={isSubmitting}>
+        {isSubmitting ? 'Saving...' : isEdit ? 'Update Product' : 'Create Product'}
+      </Button>
+      <Button
+        variant="outlined"
+        onClick={() => navigate(`/product`)}
+        disabled={isSubmitting}
+      >
+        Cancel
+      </Button>
+    </Box>
+  </Stack>
+</form>
       </Box>
     </Card>
   );
