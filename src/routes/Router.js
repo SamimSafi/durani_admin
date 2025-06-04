@@ -79,6 +79,9 @@ const WhyChooseUsForm = lazy(() => import('../views/whychooseus/WhyChooseUsForm'
 const ContentList = lazy(() => import('../views/content/ContentList'));
 const ContentForm = lazy(() => import('../views/content/ContentForm'));
 
+const SloganList = lazy(() => import('../views/slogan/SloganList'));
+const SloganForm = lazy(() => import('../views/slogan/SloganForm'));
+
 const ContactList = lazy(() => import('../views/contact/ContactList'));
 const basePath = import.meta.env.VITE_BASE_PATH || '/';
 
@@ -161,6 +164,9 @@ const Router = [
           { path: '/product', element: <ProductList /> },
           { path: '/product/create', element: <ProductForm /> },
           { path: '/product/edit/:id', element: <ProductForm /> },
+          { path: '/slogan', element: <SloganList /> },
+          { path: '/slogan/create', element: <SloganForm /> },
+          { path: '/slogan/edit/:id', element: <SloganForm /> },
           { path: '*', element: <Navigate to="/auth/404" /> },
         ],
       },

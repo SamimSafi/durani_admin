@@ -821,6 +821,30 @@ const WhyChooseUsAPI = {
   
 };
 
+// Slogan API calls
+const SloganAPI = {
+    fetchSlogan: async () => {
+    const response = await axiosInstance.get('/slogans');
+    return response.data;
+  },
+  createSlogan: async (SloganData) => {
+    const response = await axiosInstance.post('/slogans', SloganData);
+    return response.data;
+  },
+   updateSlogan: async (id, SloganData) => {
+    const response = await axiosInstance.put(`/slogans/${id}`, SloganData);
+    return response.data;
+  },
+  deleteSlogan: async (SloganId) => {
+    const response = await axiosInstance.delete(`/slogans/${SloganId}`);
+    return response.data;
+  },
+  getSlogan: async (SloganId) => {
+    const response = await axiosInstance.get(`/slogans/${SloganId}`);
+    return response.data;
+  },
+};
+
 // Centralized agent exporting all resource APIs
 const agent = {
   Auth:AuthAPI,
@@ -848,6 +872,7 @@ const agent = {
  Content: ContentAPI,
  ProductCategory: ProductCategoryAPI,
  Product: ProductAPI,
+ Slogan: SloganAPI,
 };
 
 export default agent;

@@ -19,7 +19,8 @@ import {
   IconFileCv,
   IconHandClick,
   IconEdit,
-  IconBrandProducthunt
+  IconBrandProducthunt,
+  IconMenuDeep
 } from '@tabler/icons-react';
 import { IconAddressBook } from '@tabler/icons-react';
 
@@ -33,6 +34,12 @@ const Menuitems = [
     title: 'Dashboard',
     icon: IconLayoutDashboard,
     href: '/dashboard',
+  },
+    {
+    id: uniqueId(),
+    title: 'Slogan',
+    icon: IconMenuDeep,
+    href: '/slogan', 
   },
   {
     id: uniqueId(),
@@ -148,6 +155,7 @@ const Menuitems = [
     icon: IconHandClick,
     href: '/whyChooseUs', 
   },
+
 ];
 
 export default Menuitems;
