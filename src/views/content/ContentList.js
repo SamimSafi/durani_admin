@@ -33,14 +33,11 @@ const ContentList = () => {
   // Category options
   const categoryOptions = [
     { value: '', label: 'All Categories' }, // Added 'All' option
-    { value: 'CEO_MESSAGE', label: 'CEO Message' },
-    { value: 'VICE_PRESIDENT_MESSAGE', label: 'Vice President Message' },
-    { value: 'VISION', label: 'Vision' },
-    { value: 'MISSION', label: 'Mission' },
-    { value: 'MARKET_PRESENCE', label: 'Market Presence' },
-    { value: 'STRATEGY', label: 'Strategy' },
-    { value: 'SUSTAINABILITY', label: 'Sustainability' },
-    { value: 'NEWS', label: 'News' },
+    { value: 'ANNOUNCEMENTS', label: 'ANNOUNCEMENTS' },
+    { value: 'AWARDS', label: 'AWARDS' },
+    { value: 'SUSTAINABILITY', label: 'SUSTAINABILITY' },
+    { value: 'NEWS', label: 'NEWS' },
+    { value: 'ORGANIZATION_CHART', label: 'ORGANIZATION_CHART' },
   ];
 
   useEffect(() => {

@@ -25,14 +25,11 @@ const ContentFormTable = ({
 
   // Category labels for display
   const categoryLabels = {
-    CEO_MESSAGE: 'CEO Message',
-    VICE_PRESIDENT_MESSAGE: 'Vice President Message',
-    VISION: 'Vision',
-    MISSION: 'Mission',
-    MARKET_PRESENCE: 'Market Presence',
-    STRATEGY: 'Strategy',
-    SUSTAINABILITY: 'Sustainability',
-    NEWS: 'News',
+    ANNOUNCEMENTS: 'ANNOUNCEMENTS',
+    AWARDS: 'AWARDS',
+    SUSTAINABILITY: 'SUSTAINABILITY',
+    NEWS: 'NEWS',
+    ORGANIZATION_CHART: 'ORGANIZATION_CHART',
   };
 
   return (
@@ -49,8 +46,12 @@ const ContentFormTable = ({
                 Title
               </TableSortLabel>
             </TableCell>
-            <TableCell>Category</TableCell>
+            <TableCell>Title Pashto</TableCell>
+            <TableCell>Title Dari</TableCell>
             <TableCell>Content</TableCell>
+            <TableCell>Content Pashto</TableCell>
+            <TableCell>Content Dari</TableCell>
+            <TableCell>Category</TableCell>
             <TableCell>File URL</TableCell>
             <TableCell>Priority</TableCell>
             <TableCell>Image</TableCell>
@@ -64,8 +65,12 @@ const ContentFormTable = ({
               selected={selected.includes(content.id)}
             >
               <TableCell>{content.title || '-'}</TableCell>
-              <TableCell>{categoryLabels[content.category] || content.category || '-'}</TableCell>
+              <TableCell>{content.title_pashto || '-'}</TableCell>
+              <TableCell>{content.title_dari || '-'}</TableCell>
               <TableCell>{content.content || '-'}</TableCell>
+              <TableCell>{content.content_pashto || '-'}</TableCell>
+              <TableCell>{content.content_dari || '-'}</TableCell>
+              <TableCell>{categoryLabels[content.category] || content.category || '-'}</TableCell>
               <TableCell>{content.fileUrl || '-'}</TableCell>
               <TableCell>{content.priority || 0}</TableCell>
               <TableCell>

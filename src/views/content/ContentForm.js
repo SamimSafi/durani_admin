@@ -36,7 +36,11 @@ const ContentForm = () => {
     defaultValues: {
       category: '',
       title: '',
+      title_pashto: '',
+      title_dari: '',
       content: '',
+      content_pashto: '',
+      content_dari: '',
       fileUrl: '',
       priority: 0,
       imagefile: null,
@@ -53,7 +57,11 @@ const ContentForm = () => {
             setContentData(content);
             setValue('category', content.category || '');
             setValue('title', content.title || '');
+            setValue('title_pashto', content.title_pashto || '');
+            setValue('title_dari', content.title_dari || '');
             setValue('content', content.content || '');
+            setValue('content_pashto', content.content_pashto || '');
+            setValue('content_dari', content.content_dari || '');
             setValue('fileUrl', content.fileUrl || '');
             setValue('priority', content.priority || 0);
             if (content.image) {
@@ -80,7 +88,11 @@ const ContentForm = () => {
       const payload = {
         category: data.category,
         title: data.title,
+        title_pashto: data.title_pashto,
+        title_dari: data.title_dari,
         content: data.content || '', // Send empty string if not provided
+        content_pashto: data.content_pashto || '', // Send empty string if not provided
+        content_dari: data.content_dari || '', // Send empty string if not provided
         fileUrl: data.fileUrl || '', // Send empty string if not provided
         priority: Number(data.priority), // Ensure number
         imagefile: data.imagefile || null, // Send file or null
@@ -100,14 +112,11 @@ const ContentForm = () => {
 
   // Category options
   const categoryOptions = [
-    { value: 'CEO_MESSAGE', label: 'CEO Message' },
-    { value: 'VICE_PRESIDENT_MESSAGE', label: 'Vice President Message' },
-    { value: 'VISION', label: 'Vision' },
-    { value: 'MISSION', label: 'Mission' },
-    { value: 'MARKET_PRESENCE', label: 'Market Presence' },
-    { value: 'STRATEGY', label: 'Strategy' },
-    { value: 'SUSTAINABILITY', label: 'Sustainability' },
-    { value: 'NEWS', label: 'News' },
+    { value: 'ANNOUNCEMENTS', label: 'ANNOUNCEMENTS' },
+    { value: 'AWARDS', label: 'AWARDS' },
+    { value: 'SUSTAINABILITY', label: 'SUSTAINABILITY' },
+    { value: 'NEWS', label: 'NEWS' },
+    { value: 'ORGANIZATION_CHART', label: 'ORGANIZATION_CHART' },
   ];
 
   return (
@@ -153,7 +162,7 @@ const ContentForm = () => {
 
             {/* Title */}
             <Grid container spacing={2}>
-              <Grid item xs={12}>
+              <Grid item xs={4}>
                 <TextField
                   label="Title"
                   {...register('title', {
@@ -168,11 +177,41 @@ const ContentForm = () => {
                   helperText={errors.title?.message}
                 />
               </Grid>
+              <Grid item xs={4}>
+                <TextField
+                  label="Title Pashto"
+                  {...register('title_pashto', {
+                    required:
+                      contentData?.category === 'NEWS' || !isEdit
+                        ? 'Title Pashto is required'
+                        : false,
+                  })}
+                  fullWidth
+                  disabled={isSubmitting}
+                  error={!!errors.title_pashto}
+                  helperText={errors.title_pashto?.message}
+                />
+              </Grid>
+              <Grid item xs={4}>
+                <TextField
+                  label="Title Dari"
+                  {...register('title_dari', {
+                    required:
+                      contentData?.category === 'NEWS' || !isEdit
+                        ? 'Title Dari is required'
+                        : false,
+                  })}
+                  fullWidth
+                  disabled={isSubmitting}
+                  error={!!errors.title_dari}
+                  helperText={errors.title_dari?.message}
+                />
+              </Grid>
             </Grid>
 
             {/* Content */}
             <Grid container spacing={2}>
-              <Grid item xs={12}>
+              <Grid item xs={4}>
                 <TextField
                   label="Content"
                   {...register('content')}
@@ -182,6 +221,30 @@ const ContentForm = () => {
                   disabled={isSubmitting}
                   error={!!errors.content}
                   helperText={errors.content?.message}
+                />
+              </Grid>
+              <Grid item xs={4}>
+                <TextField
+                  label="Content Pashto"
+                  {...register('content_pashto')}
+                  fullWidth
+                  multiline
+                  rows={4}
+                  disabled={isSubmitting}
+                  error={!!errors.content_pashto}
+                  helperText={errors.content_pashto?.message}
+                />
+              </Grid>
+              <Grid item xs={4}>
+                <TextField
+                  label="Content Dari"
+                  {...register('content_dari')}
+                  fullWidth
+                  multiline
+                  rows={4}
+                  disabled={isSubmitting}
+                  error={!!errors.content_dari}
+                  helperText={errors.content_dari?.message}
                 />
               </Grid>
             </Grid>
