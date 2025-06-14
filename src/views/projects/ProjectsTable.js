@@ -15,6 +15,7 @@ import { MoreVert, Edit, Delete, Cancel, CheckCircle, List, Slideshow } from '@m
 import { useNavigate } from 'react-router-dom';
 import useProjectsStore from '../../context/projectsStore';
 import ImageDisplay from '../../components/ImageDisplay';
+import { DescriptionComponent } from '../utilities/dateUtils';
 
 const ProjectsFormTable = ({
   Projects,
@@ -27,11 +28,14 @@ const ProjectsFormTable = ({
  const { activateProjects, deactivateProjects } = useProjectsStore();
 
   const [anchorEl, setAnchorEl] = useState(null);
+  const [menuProject, setMenuProject] = useState(null);
+
   const open = Boolean(anchorEl);
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+const handleClick = (event, project) => {
+  setAnchorEl(event.currentTarget);
+  setMenuProject(project);
+};
 
   const handleClose = () => {
     setAnchorEl(null);
@@ -79,20 +83,20 @@ const ProjectsFormTable = ({
           </TableRow>
         </TableHead>
         <TableBody>
-          {Projects.map((Projects) => (
+          {Projects.map((Projects,index) => (
             <TableRow
-              key={Projects.id}
-              selected={selected.includes(Projects.id)}
+              key={index}
+              selected={selected.includes(index)}
             >
-              <TableCell>{Projects.title}</TableCell>
+              <TableCell>{Projects.id}</TableCell>
               <TableCell>{Projects.title_pashto}</TableCell>
               <TableCell>{Projects.title_dari}</TableCell>
               <TableCell>{Projects.briefSummary}</TableCell>
               <TableCell>{Projects.briefSummary_pashto}</TableCell>
               <TableCell>{Projects.briefSummary_dari}</TableCell>
-              <TableCell>{Projects.FullDescription}</TableCell>
-              <TableCell>{Projects.FullDescription_pashto}</TableCell>
-              <TableCell>{Projects.FullDescription_dari}</TableCell>
+              <TableCell>{DescriptionComponent(Projects.FullDescription)}</TableCell>
+              <TableCell>{DescriptionComponent(Projects.FullDescription_pashto)}</TableCell>
+              <TableCell>{DescriptionComponent(Projects.FullDescription_dari)}</TableCell>
               <TableCell>{Projects.Client}</TableCell>
               <TableCell>{Projects.Client_pashto}</TableCell>
               <TableCell>{Projects.Client_dari}</TableCell>
@@ -121,50 +125,50 @@ const ProjectsFormTable = ({
                         )}
               </TableCell>
              <TableCell>
-      <IconButton onClick={handleClick}>
+      <IconButton onClick={(event) => handleClick(event, Projects)}>
         <MoreVert />
       </IconButton>
       <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
-        <MenuItem onClick={() => handleNavigate(`/projects/edit/${Projects.id}`)}>
+        <MenuItem onClick={() => handleNavigate(`/projects/edit/${menuProject?.id}`)}>
           <ListItemIcon>
             <Edit fontSize="small" />
           </ListItemIcon>
           Edit Project
         </MenuItem>
-        <MenuItem onClick={() => handleNavigate(`/projectGoals/${Projects.id}`)}>
+        <MenuItem onClick={() => handleNavigate(`/projectGoals/${menuProject?.id}`)}>
           <ListItemIcon>
             <List fontSize="small" />
           </ListItemIcon>
           View Project Goals
         </MenuItem>
-        <MenuItem onClick={() => handleNavigate(`/projectSliders/${Projects.id}`)}>
+        <MenuItem onClick={() => handleNavigate(`/projectSliders/${menuProject?.id}`)}>
           <ListItemIcon>
             <Slideshow fontSize="small" />
           </ListItemIcon>
           View Project Sliders
         </MenuItem>
-        <MenuItem onClick={() => handleNavigate(`/projectFinalOutcomes/${Projects.id}`)}>
+        <MenuItem onClick={() => handleNavigate(`/projectFinalOutcomes/${menuProject?.id}`)}>
           <ListItemIcon>
             <Slideshow fontSize="small" />
           </ListItemIcon>
           View Project Final Outcome
         </MenuItem>
         {Projects.isActive ? (
-          <MenuItem onClick={() => { deactivateProjects(Projects.id); handleClose(); }}>
+          <MenuItem onClick={() => { deactivateProjects(menuProject?.id); handleClose(); }}>
             <ListItemIcon>
               <Cancel fontSize="small" />
             </ListItemIcon>
             Deactivate Project
           </MenuItem>
         ) : (
-          <MenuItem onClick={() => { activateProjects(Projects.id); handleClose(); }}>
+          <MenuItem onClick={() => { activateProjects(menuProject?.id); handleClose(); }}>
             <ListItemIcon>
               <CheckCircle fontSize="small" />
             </ListItemIcon>
             Activate Project
           </MenuItem>
         )}
-        <MenuItem onClick={() => { handleDelete(Projects.id); handleClose(); }}>
+        <MenuItem onClick={() => { handleDelete(menuProject?.id); handleClose(); }}>
           <ListItemIcon>
             <Delete fontSize="small" />
           </ListItemIcon>
