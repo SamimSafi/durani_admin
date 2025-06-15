@@ -65,12 +65,12 @@ const ServicesFormTable = ({
               <TableCell>{Services.title}</TableCell>
               <TableCell>{Services.title_pashto}</TableCell>
               <TableCell>{Services.title_dari}</TableCell>
-             <TableCell><DescriptionComponent description={ProjectSliders.summary} maxLength={60} /></TableCell>
-              <TableCell><DescriptionComponent description={ProjectSliders.summary_pashto} maxLength={60} /></TableCell>
-              <TableCell><DescriptionComponent description={ProjectSliders.summary_dari} maxLength={60} /></TableCell>
-              <TableCell><DescriptionComponent description={ProjectSliders.detailedDescription} maxLength={60} /></TableCell>
-              <TableCell><DescriptionComponent description={ProjectSliders.detailedDescription_pashto} maxLength={60} /></TableCell>
-              <TableCell><DescriptionComponent description={ProjectSliders.detailedDescription_dari} maxLength={60} /></TableCell>
+             <TableCell><DescriptionComponent description={Services.summary} maxLength={60} /></TableCell>
+              <TableCell><DescriptionComponent description={Services.summary_pashto} maxLength={60} /></TableCell>
+              <TableCell><DescriptionComponent description={Services.summary_dari} maxLength={60} /></TableCell>
+              <TableCell><DescriptionComponent description={Services.detailedDescription} maxLength={60} /></TableCell>
+              <TableCell><DescriptionComponent description={Services.detailedDescription_pashto} maxLength={60} /></TableCell>
+              <TableCell><DescriptionComponent description={Services.detailedDescription_dari} maxLength={60} /></TableCell>
               <TableCell>{Services.numberOfSatisfiedClient}</TableCell>
               <TableCell>{Services.successWork}</TableCell>
               <TableCell> <ImageDisplay
