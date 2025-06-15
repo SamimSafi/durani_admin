@@ -846,7 +846,7 @@ const SloganAPI = {
   updateSloganImage: async (id, logoFile) => {
     const formData = new FormData();
     formData.append('image', logoFile);
-    const response = await axiosInstance.post(`/slogans/${id}/image`, formData, {
+    const response = await axiosInstance.put(`/slogans/${id}/image`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },

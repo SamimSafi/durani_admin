@@ -38,6 +38,7 @@ const SloganTable = ({
             <TableCell>content</TableCell>
             <TableCell>content dari</TableCell>
             <TableCell>content pashto</TableCell>
+            <TableCell>Image</TableCell>
             <TableCell>Actions</TableCell>
           </TableRow>
         </TableHead>
@@ -51,6 +52,13 @@ const SloganTable = ({
               <TableCell>{Slogan.content}</TableCell>
               <TableCell>{Slogan.content_dari}</TableCell>
               <TableCell>{Slogan.content_pashto}</TableCell>
+              <TableCell> 
+                        <ImageDisplay
+                          path={Slogan.image}
+                          alt={Slogan.title}
+                          fallbackText="No Image"
+                        />
+                </TableCell>
               <TableCell>
                 <IconButton
                   onClick={() => navigate(`/slogan/edit/${Slogan.id}`)}
