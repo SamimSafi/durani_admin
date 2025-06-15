@@ -12,6 +12,7 @@ import {
 } from '@mui/material';
 import { Delete, Edit, Image  } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
+import ImageDisplay from '../../components/ImageDisplay';
 
 const SloganTable = ({
   Slogan,
