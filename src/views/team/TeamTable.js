@@ -26,6 +26,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 import ImageDisplay from '../../components/ImageDisplay';
 import useTeamStore from '../../context/teamStore';
+import { DescriptionComponent } from '../utilities/dateUtils';
 
 const TeamTable = ({
   Team,
@@ -113,13 +114,13 @@ const { activateTeam, deactivateTeam } = useTeamStore();
               <TableCell>{teamy.jobTitle}</TableCell>
               <TableCell>{teamy.jobTitle_pashto}</TableCell>
               <TableCell>{teamy.jobTitle_dari}</TableCell>
-              <TableCell>{teamy.description}</TableCell>
-              <TableCell>{teamy.description_pashto}</TableCell>
-              <TableCell>{teamy.description_dari}</TableCell>
+              <TableCell><DescriptionComponent description={teamy.description} maxLength={60} /></TableCell>
+              <TableCell><DescriptionComponent description={teamy.description_pashto} maxLength={60} /></TableCell>
+              <TableCell><DescriptionComponent description={teamy.description_dari} maxLength={60} /></TableCell>
               <TableCell>{teamy.facebook}</TableCell>
               <TableCell>{teamy.twitter}</TableCell>
+              <TableCell>{teamy.instagram}</TableCell>
               <TableCell>{teamy.linkedIn}</TableCell>
-              <TableCell>{teamy.description_dari}</TableCell>
               <TableCell>
                 <ImageDisplay
                               path={teamy.image}

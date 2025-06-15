@@ -13,6 +13,7 @@ import {
 import { Delete, Edit, Image  } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import ImageDisplay from '../../components/ImageDisplay';
+import { DescriptionComponent } from '../utilities/dateUtils';
 
 const SloganTable = ({
   Slogan,
@@ -50,9 +51,9 @@ const SloganTable = ({
               selected={selected.includes(Slogan.id)}
             >
               <TableCell>{Slogan.pageName}</TableCell>
-              <TableCell>{Slogan.content}</TableCell>
-              <TableCell>{Slogan.content_dari}</TableCell>
-              <TableCell>{Slogan.content_pashto}</TableCell>
+              <TableCell>{Slogan.content}<DescriptionComponent description={Slogan.content} maxLength={60} /></TableCell>
+              <TableCell>{Slogan.content_dari}<DescriptionComponent description={Slogan.content_dari} maxLength={60} /></TableCell>
+              <TableCell>{Slogan.content_pashto}<DescriptionComponent description={Slogan.content_pashto} maxLength={60} /></TableCell>
               <TableCell> 
                         <ImageDisplay
                           path={Slogan.image}

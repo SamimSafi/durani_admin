@@ -15,6 +15,7 @@ import { useNavigate } from 'react-router-dom';
 import ImageDisplay from '../../components/ImageDisplay';
 import { useEffect } from 'react';
 import useProductCategoryStore from '../../context/productCategoryStore';
+import { DescriptionComponent } from '../utilities/dateUtils';
 
 const ProductFormTable = ({
   Product,
@@ -64,7 +65,7 @@ const ProductFormTable = ({
               selected={selected.includes(product.id)}
             >
               <TableCell>{product.name}</TableCell>
-              <TableCell>{product.description}</TableCell>
+              <TableCell><DescriptionComponent description={product.description} maxLength={60} /></TableCell>
               <TableCell>{getCategoryTitle(product.categoryId)}</TableCell>
               <TableCell>
                 <ImageDisplay

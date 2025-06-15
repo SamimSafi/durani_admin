@@ -13,6 +13,7 @@ import {
 import { Cancel, CheckCircle, Delete, Edit } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import useMissionStore from '../../context/missionStore';
+import { DescriptionComponent } from '../utilities/dateUtils';
 
 const MissionTable = ({
   Mission,
@@ -57,9 +58,9 @@ const MissionTable = ({
               <TableCell>{Mission.title}</TableCell>
               <TableCell>{Mission.title_pashto}</TableCell>
               <TableCell>{Mission.title_dari}</TableCell>
-              <TableCell>{Mission.description}</TableCell>
-              <TableCell>{Mission.description_pashto}</TableCell>
-              <TableCell>{Mission.description_dari}</TableCell>
+               <TableCell><DescriptionComponent description={Mission.description} maxLength={60} /></TableCell>
+              <TableCell><DescriptionComponent description={Mission.description_pashto} maxLength={60} /></TableCell>
+              <TableCell><DescriptionComponent description={Mission.description_dari} maxLength={60} /></TableCell>
 <TableCell>
                   <div
                     style={{

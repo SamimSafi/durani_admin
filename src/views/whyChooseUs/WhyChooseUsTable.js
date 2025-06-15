@@ -13,6 +13,7 @@ import {
 import { Cancel, CheckCircle, Delete, Edit } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import useWhyChooseUsStore from '../../context/whyChooseUsStore';
+import { DescriptionComponent } from '../utilities/dateUtils';
 
 const WhyChooseUsTable = ({
   WhyChooseUs,
@@ -43,7 +44,6 @@ const WhyChooseUsTable = ({
             <TableCell>Description</TableCell>
             <TableCell>Description Pashto</TableCell>
             <TableCell>Description Dari</TableCell>
-            <TableCell>Project ID</TableCell>
             <TableCell>Video Link</TableCell>
             <TableCell>Actions</TableCell>
           </TableRow>
@@ -57,9 +57,9 @@ const WhyChooseUsTable = ({
               <TableCell>{chooseUs.title}</TableCell>
               <TableCell>{chooseUs.title_pashto}</TableCell>
               <TableCell>{chooseUs.title_dari}</TableCell>
-              <TableCell>{chooseUs.description}</TableCell>
-              <TableCell>{chooseUs.description_pashto}</TableCell>
-              <TableCell>{chooseUs.description_dari}</TableCell>
+               <TableCell><DescriptionComponent description={chooseUs.description} maxLength={60} /></TableCell>
+              <TableCell><DescriptionComponent description={chooseUs.description_pashto} maxLength={60} /></TableCell>
+              <TableCell><DescriptionComponent description={chooseUs.description_dari} maxLength={60} /></TableCell>
               <TableCell>
                 {chooseUs.video_link ? (
                   <a

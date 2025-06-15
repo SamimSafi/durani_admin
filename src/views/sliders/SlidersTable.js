@@ -14,6 +14,7 @@ import { Cancel, CheckCircle, Delete, Edit } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import useSlidersStore from '../../context/slidersStore';
 import ImageDisplay from '../../components/ImageDisplay';
+import { DescriptionComponent } from '../utilities/dateUtils';
 
 const SlidersFormTable = ({
   Sliders,
@@ -66,9 +67,9 @@ const SlidersFormTable = ({
               <TableCell>{Sliders.subTitle}</TableCell>
               <TableCell>{Sliders.subTitle_pashto}</TableCell>
               <TableCell>{Sliders.subTitle_dari}</TableCell>
-              <TableCell>{Sliders.description}</TableCell>
-              <TableCell>{Sliders.description_pashto}</TableCell>
-              <TableCell>{Sliders.description_dari}</TableCell>
+              <TableCell><DescriptionComponent description={Sliders.description} maxLength={60} /></TableCell>
+              <TableCell><DescriptionComponent description={Sliders.description_pashto} maxLength={60} /></TableCell>
+              <TableCell><DescriptionComponent description={Sliders.description_dari} maxLength={60} /></TableCell>
               <TableCell>{Sliders.smallSubTitle}</TableCell>
               <TableCell>{Sliders.smallSubTitle_pashto}</TableCell>
               <TableCell>{Sliders.smallSubTitle_dari}</TableCell>

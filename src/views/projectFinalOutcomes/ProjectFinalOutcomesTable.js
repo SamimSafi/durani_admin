@@ -13,6 +13,7 @@ import {
 import { Cancel, CheckCircle, Delete, Edit } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import useProjectFinalOutcomesStore from '../../context/projectFinalOutcomesStore';
+import { DescriptionComponent } from '../utilities/dateUtils';
 
 const ProjectFinalOutcomesTable = ({
   ProjectFinalOutcomes,
@@ -58,9 +59,9 @@ const ProjectFinalOutcomesTable = ({
               <TableCell>{outcome.title}</TableCell>
               <TableCell>{outcome.title_pashto}</TableCell>
               <TableCell>{outcome.title_dari}</TableCell>
-              <TableCell>{outcome.description}</TableCell>
-              <TableCell>{outcome.description_pashto}</TableCell>
-              <TableCell>{outcome.description_dari}</TableCell>
+              <TableCell><DescriptionComponent description={outcome.description} maxLength={60} /></TableCell>
+              <TableCell><DescriptionComponent description={outcome.description_pashto} maxLength={60} /></TableCell>
+              <TableCell><DescriptionComponent description={outcome.description_dari} maxLength={60} /></TableCell>
               <TableCell>{outcome.projectId}</TableCell>
               <TableCell>
                 {outcome.video_link ? (

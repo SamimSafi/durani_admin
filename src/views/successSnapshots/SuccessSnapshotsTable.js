@@ -13,6 +13,7 @@ import {
 import { Cancel, CheckCircle, Delete, Edit } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import useSuccessSnapshotsStore from '../../context/successSnapshotsStore';
+import { DescriptionComponent } from '../utilities/dateUtils';
 
 const SuccessSnapshotsTable = ({
   SuccessSnapshots,
@@ -65,9 +66,9 @@ const SuccessSnapshotsTable = ({
               <TableCell>{SuccessSnapshots.HappyClientCount}</TableCell>
               <TableCell>{SuccessSnapshots.QualifiedEnginnerCount}</TableCell>
               <TableCell>{SuccessSnapshots.YearsExperience}</TableCell>
-              <TableCell>{SuccessSnapshots.description}</TableCell>
-              <TableCell>{SuccessSnapshots.description_pashto}</TableCell>
-              <TableCell>{SuccessSnapshots.description_dari}</TableCell>
+             <TableCell><DescriptionComponent description={SuccessSnapshots.description} maxLength={60} /></TableCell>
+              <TableCell><DescriptionComponent description={SuccessSnapshots.description_pashto} maxLength={60} /></TableCell>
+              <TableCell><DescriptionComponent description={SuccessSnapshots.description_dari} maxLength={60} /></TableCell>
 <TableCell>
                   <div
                     style={{

@@ -13,6 +13,7 @@ import {
 import { Cancel, CheckCircle, Delete, Edit } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import useJobPostingStore from '../../context/jobPostingStore';
+import { DescriptionComponent } from '../utilities/dateUtils';
 
 const JobPostingTable = ({
   jobPosting,
@@ -70,9 +71,9 @@ const JobPostingTable = ({
               <TableCell>{jobPosting.title}</TableCell>
               <TableCell>{jobPosting.title_pashto}</TableCell>
               <TableCell>{jobPosting.title_dari}</TableCell>
-              <TableCell>{jobPosting.description}</TableCell>
-              <TableCell>{jobPosting.description_pashto}</TableCell>
-              <TableCell>{jobPosting.description_dari}</TableCell>
+             <TableCell> <DescriptionComponent description={jobPosting.description} maxLength={60} /></TableCell>
+              <TableCell> <DescriptionComponent description={jobPosting.description_pashto} maxLength={60} /></TableCell>
+              <TableCell><DescriptionComponent description={jobPosting.description_dari} maxLength={60} /></TableCell>
               <TableCell>{jobPosting.category}</TableCell>
               <TableCell>{jobPosting.contractType}</TableCell>
               <TableCell>{jobPosting.location}</TableCell>

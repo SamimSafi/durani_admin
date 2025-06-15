@@ -91,12 +91,12 @@ const handleClick = (event, project) => {
               <TableCell>{Projects.title}</TableCell>
               <TableCell>{Projects.title_pashto}</TableCell>
               <TableCell>{Projects.title_dari}</TableCell>
-              <TableCell> <DescriptionComponent description={Projects.briefSummary} maxLength={100} /></TableCell>
-              <TableCell><DescriptionComponent description={Projects.briefSummary_pashto} maxLength={100} /></TableCell>
-              <TableCell><DescriptionComponent description={Projects.briefSummary_dari} maxLength={100} /></TableCell>
-              <TableCell><DescriptionComponent description={Projects.FullDescription} maxLength={100} /></TableCell>
-              <TableCell><DescriptionComponent description={Projects.FullDescription_pashto} maxLength={100} /></TableCell>
-              <TableCell><DescriptionComponent description={Projects.FullDescription_dari} maxLength={100} /></TableCell>
+              <TableCell> <DescriptionComponent description={Projects.briefSummary} maxLength={60} /></TableCell>
+              <TableCell><DescriptionComponent description={Projects.briefSummary_pashto} maxLength={60} /></TableCell>
+              <TableCell><DescriptionComponent description={Projects.briefSummary_dari} maxLength={60} /></TableCell>
+              <TableCell><DescriptionComponent description={Projects.FullDescription} maxLength={60} /></TableCell>
+              <TableCell><DescriptionComponent description={Projects.FullDescription_pashto} maxLength={60} /></TableCell>
+              <TableCell><DescriptionComponent description={Projects.FullDescription_dari} maxLength={60} /></TableCell>
               <TableCell>{Projects.Client}</TableCell>
               <TableCell>{Projects.Client_pashto}</TableCell>
               <TableCell>{Projects.Client_dari}</TableCell>

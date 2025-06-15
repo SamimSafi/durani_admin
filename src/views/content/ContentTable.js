@@ -13,6 +13,7 @@ import {
 import { Cancel, CheckCircle, Delete, Edit } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import ImageDisplay from '../../components/ImageDisplay';
+import { DescriptionComponent } from '../utilities/dateUtils';
 
 const ContentFormTable = ({
   Content,
@@ -67,9 +68,9 @@ const ContentFormTable = ({
               <TableCell>{content.title || '-'}</TableCell>
               <TableCell>{content.title_pashto || '-'}</TableCell>
               <TableCell>{content.title_dari || '-'}</TableCell>
-              <TableCell>{content.content || '-'}</TableCell>
-              <TableCell>{content.content_pashto || '-'}</TableCell>
-              <TableCell>{content.content_dari || '-'}</TableCell>
+              <TableCell><DescriptionComponent description={content.content} maxLength={60} /> </TableCell>
+              <TableCell><DescriptionComponent description={content.content_pashto} maxLength={60} /></TableCell>
+              <TableCell><DescriptionComponent description={content.content_dari} maxLength={60} /></TableCell>
               <TableCell>{categoryLabels[content.category] || content.category || '-'}</TableCell>
               <TableCell>{content.fileUrl || '-'}</TableCell>
               <TableCell>{content.priority || 0}</TableCell>

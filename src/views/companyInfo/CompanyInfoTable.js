@@ -24,6 +24,7 @@ import {
 } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import ImageDisplay from '../../components/ImageDisplay';
+import { DescriptionComponent } from '../utilities/dateUtils';
 
 const CompanyInfoTable = ({
   CompanyInfo,
@@ -102,9 +103,9 @@ const CompanyInfoTable = ({
               <TableCell>{company.name}</TableCell>
               <TableCell>{company.name_pashto}</TableCell>
               <TableCell>{company.name_dari}</TableCell>
-              <TableCell>{company.description}</TableCell>
-              <TableCell>{company.description_pashto}</TableCell>
-              <TableCell>{company.description_dari}</TableCell>
+               <TableCell> <DescriptionComponent description={company.description} maxLength={60} /></TableCell>
+              <TableCell> <DescriptionComponent description={company.description_pashto} maxLength={60} /></TableCell>
+              <TableCell><DescriptionComponent description={company.description_dari} maxLength={60} /></TableCell>
               <TableCell>
                 <ImageDisplay
                               path={company.logo}

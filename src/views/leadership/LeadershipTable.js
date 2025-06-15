@@ -14,6 +14,7 @@ import { Cancel, CheckCircle, Delete, Edit } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import useLeadershipStore from '../../context/leadershipStore';
 import ImageDisplay from '../../components/ImageDisplay';
+import { DescriptionComponent } from '../utilities/dateUtils';
 
 const LeadershipFormTable = ({
   Leadership,
@@ -63,9 +64,9 @@ const LeadershipFormTable = ({
               <TableCell>{Leadership.job}</TableCell>
               <TableCell>{Leadership.job_pashto}</TableCell>
               <TableCell>{Leadership.job_dari}</TableCell>
-              <TableCell>{Leadership.description}</TableCell>
-              <TableCell>{Leadership.description_pashto}</TableCell>
-              <TableCell>{Leadership.description_dari}</TableCell>
+             <TableCell><DescriptionComponent description={Leadership.description} maxLength={60} /></TableCell>
+              <TableCell><DescriptionComponent description={Leadership.description_pashto} maxLength={60} /></TableCell>
+              <TableCell><DescriptionComponent description={Leadership.description_dari} maxLength={60} /></TableCell>
               <TableCell> 
                        <ImageDisplay
                               path={Leadership.photoPath}

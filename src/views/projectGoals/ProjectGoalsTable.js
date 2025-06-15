@@ -14,6 +14,7 @@ import { Cancel, CheckCircle, Delete, Edit } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import useProjectGoalsStore from '../../context/projectGoalsStore';
 import ImageDisplay from '../../components/ImageDisplay';
+import { DescriptionComponent } from '../utilities/dateUtils';
 
 const ProjectGoalsFormTable = ({
   ProjectGoals,
@@ -57,9 +58,9 @@ const ProjectGoalsFormTable = ({
               <TableCell>{ProjectGoals.title}</TableCell>
               <TableCell>{ProjectGoals.title_pashto}</TableCell>
               <TableCell>{ProjectGoals.title_dari}</TableCell>
-              <TableCell>{ProjectGoals.briefSummary}</TableCell>
-              <TableCell>{ProjectGoals.briefSummary_pashto}</TableCell>
-              <TableCell>{ProjectGoals.briefSummary_dari}</TableCell>
+               <TableCell><DescriptionComponent description={ProjectGoals.briefSummary} maxLength={60} /></TableCell>
+              <TableCell><DescriptionComponent description={ProjectGoals.briefSummary_pashto} maxLength={60} /></TableCell>
+              <TableCell><DescriptionComponent description={ProjectGoals.briefSummary_dari} maxLength={60} /></TableCell>
               <TableCell> 
                     <ImageDisplay
                               path={ProjectGoals.image}

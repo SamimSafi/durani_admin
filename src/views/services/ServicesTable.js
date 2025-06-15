@@ -14,6 +14,7 @@ import { Cancel, CheckCircle, Delete, Edit } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import useServicesStore from '../../context/servicesStore';
 import ImageDisplay from '../../components/ImageDisplay';
+import { DescriptionComponent } from '../utilities/dateUtils';
 
 const ServicesFormTable = ({
   Services,
@@ -64,12 +65,12 @@ const ServicesFormTable = ({
               <TableCell>{Services.title}</TableCell>
               <TableCell>{Services.title_pashto}</TableCell>
               <TableCell>{Services.title_dari}</TableCell>
-              <TableCell>{Services.summary}</TableCell>
-              <TableCell>{Services.summary_pashto}</TableCell>
-              <TableCell>{Services.summary_dari}</TableCell>
-              <TableCell>{Services.detailedDescription}</TableCell>
-              <TableCell>{Services.detailedDescription_pashto}</TableCell>
-              <TableCell>{Services.detailedDescription_dari}</TableCell>
+             <TableCell><DescriptionComponent description={ProjectSliders.summary} maxLength={60} /></TableCell>
+              <TableCell><DescriptionComponent description={ProjectSliders.summary_pashto} maxLength={60} /></TableCell>
+              <TableCell><DescriptionComponent description={ProjectSliders.summary_dari} maxLength={60} /></TableCell>
+              <TableCell><DescriptionComponent description={ProjectSliders.detailedDescription} maxLength={60} /></TableCell>
+              <TableCell><DescriptionComponent description={ProjectSliders.detailedDescription_pashto} maxLength={60} /></TableCell>
+              <TableCell><DescriptionComponent description={ProjectSliders.detailedDescription_dari} maxLength={60} /></TableCell>
               <TableCell>{Services.numberOfSatisfiedClient}</TableCell>
               <TableCell>{Services.successWork}</TableCell>
               <TableCell> <ImageDisplay

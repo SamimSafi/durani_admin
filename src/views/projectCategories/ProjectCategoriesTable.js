@@ -12,6 +12,7 @@ import {
 } from '@mui/material';
 import { Delete, Edit } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
+import { DescriptionComponent } from '../utilities/dateUtils';
 
 const ProjectCategoriesTable = ({
   ProjectCategories,
@@ -52,9 +53,9 @@ const ProjectCategoriesTable = ({
               <TableCell>{ProjectCategories.name}</TableCell>
               <TableCell>{ProjectCategories.name_pashto}</TableCell>
               <TableCell>{ProjectCategories.name_dari}</TableCell>
-              <TableCell>{ProjectCategories.description}</TableCell>
-              <TableCell>{ProjectCategories.description_pashto}</TableCell>
-              <TableCell>{ProjectCategories.description_dari}</TableCell>
+              <TableCell>{ProjectCategories.description}<DescriptionComponent description={ProjectCategories.description} maxLength={60} /></TableCell>
+              <TableCell>{ProjectCategories.description_pashto}<DescriptionComponent description={ProjectCategories.description_pashto} maxLength={60} /></TableCell>
+              <TableCell>{ProjectCategories.description_dari}<DescriptionComponent description={ProjectCategories.description_dari} maxLength={60} /></TableCell>
               <TableCell>
                 <IconButton
                   onClick={() => navigate(`/projectCategories/edit/${ProjectCategories.id}`)}

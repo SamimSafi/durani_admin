@@ -26,6 +26,7 @@ import { useNavigate } from 'react-router-dom';
 import useHistorytore from '../../context/historyStore';
 import { useState } from 'react';
 import ImageDisplay from '../../components/ImageDisplay';
+import { DescriptionComponent } from '../utilities/dateUtils';
 
 const HistoryFormTable = ({
   History,
@@ -108,10 +109,10 @@ const HistoryFormTable = ({
               <TableCell>{History.subTitle}</TableCell>
               <TableCell>{History.subTitle_pashto}</TableCell>
               <TableCell>{History.subTitle_dari}</TableCell>
-              <TableCell>{History.description}</TableCell>
-              <TableCell>{History.description_pashto}</TableCell>
-              <TableCell>{History.description_dari}</TableCell>
-              <TableCell>{History.description_dari}   <ImageDisplay
+            <TableCell> <DescriptionComponent description={History.description} maxLength={60} /></TableCell>
+              <TableCell> <DescriptionComponent description={History.description_pashto} maxLength={60} /></TableCell>
+              <TableCell><DescriptionComponent description={History.description_dari} maxLength={60} /></TableCell>
+              <TableCell><ImageDisplay
                                             path={History.imagePath}
                                             alt={History.title}
                                             fallbackText="No Image"

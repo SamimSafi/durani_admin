@@ -14,6 +14,7 @@ import { Cancel, CheckCircle, Delete, Edit } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import useProjectSlidersStore from '../../context/projectSlidersStore';
 import ImageDisplay from '../../components/ImageDisplay';
+import { DescriptionComponent } from '../utilities/dateUtils';
 
 const ProjectSlidersFormTable = ({
   ProjectSliders,
@@ -57,9 +58,9 @@ const ProjectSlidersFormTable = ({
               <TableCell>{ProjectSliders.title}</TableCell>
               <TableCell>{ProjectSliders.title_pashto}</TableCell>
               <TableCell>{ProjectSliders.title_dari}</TableCell>
-              <TableCell>{ProjectSliders.briefSummary}</TableCell>
-              <TableCell>{ProjectSliders.briefSummary_pashto}</TableCell>
-              <TableCell>{ProjectSliders.briefSummary_dari}</TableCell>
+                 <TableCell><DescriptionComponent description={ProjectSliders.briefSummary} maxLength={60} /></TableCell>
+              <TableCell><DescriptionComponent description={ProjectSliders.briefSummary_pashto} maxLength={60} /></TableCell>
+              <TableCell><DescriptionComponent description={ProjectSliders.briefSummary_dari} maxLength={60} /></TableCell>
               <TableCell> 
                         <ImageDisplay
                           path={ProjectSliders.image}

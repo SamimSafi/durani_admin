@@ -12,6 +12,7 @@ import {
 } from '@mui/material';
 import { Delete, Edit } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
+import { DescriptionComponent } from '../utilities/dateUtils';
 
 const ProductCategoryTable = ({
   ProductCategory,
@@ -46,7 +47,7 @@ const ProductCategoryTable = ({
               selected={selected.includes(ProductCategory.id)}
             >
               <TableCell>{ProductCategory.name}</TableCell>
-              <TableCell>{ProductCategory.description}</TableCell>
+              <TableCell><DescriptionComponent description={ProductCategory.description} maxLength={60} /></TableCell>
               <TableCell>
                 <IconButton
                   onClick={() => navigate(`/productCategory/edit/${ProductCategory.id}`)}

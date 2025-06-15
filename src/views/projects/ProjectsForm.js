@@ -66,6 +66,7 @@ const [projectsData, setProjectsData] = useState(null);
   // Fetch projects data for editing
   useEffect(() => {
     if (isEdit) {
+      fetchProjectCategories();
       const fetchProjectsData = async () => {
         try {
           const projects = await getProjects(id);
@@ -160,7 +161,7 @@ const [projectsData, setProjectsData] = useState(null);
         <form onSubmit={handleSubmit(onSubmit)}>
                   <Stack spacing={3}>
                        <Controller
-              name="categoryId "
+              name="categoryId"
               control={control}
               rules={{ required: 'Project is required' }}
               render={({ field }) => (
