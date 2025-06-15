@@ -18,10 +18,15 @@ export const formatDateToLocal = (dateString, options = {}) => {
 };
 
 export const DescriptionComponent = ({ description = '', maxLength = 100 }) => {
-  const truncatedDescription =
-    description.length > maxLength
-      ? description.substring(0, maxLength) + "..."
-      : description;
+  if (typeof description !== 'string' || description.trim() === '') {
+    return <>N/A</>; // or return null;
+  }
 
-  return <>{truncatedDescription}</>;
+  const shouldTruncate = description.length > maxLength;
+  const displayedText = shouldTruncate
+    ? description.substring(0, maxLength) + '...'
+    : description;
+
+  return <span>{displayedText}</span>;
 };
+

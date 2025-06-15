@@ -17,6 +17,7 @@ import {
   Facebook as FacebookIcon,
   Twitter as TwitterIcon,
   Instagram as InstagramIcon,
+  YouTube as YouTubeIcon,
 } from '@mui/icons-material';
 import useCompanyInfoStore from '../../context/companyInfoStore';
 
@@ -45,6 +46,7 @@ const CompanyInfoForm = () => {
       facebook: '',
       twitter: '',
       instagram: '',
+       youTube: '',
     },
   });
 
@@ -66,6 +68,7 @@ const CompanyInfoForm = () => {
             setValue('facebook', companyInfo.facebook || '');
             setValue('twitter', companyInfo.twitter || '');
             setValue('instagram', companyInfo.instagram || '');
+            setValue('youTube', companyInfo.youTube || '');
           } else {
             toast.error('Company Info not found.');
             navigate('/companyInfo');
@@ -218,7 +221,7 @@ const CompanyInfoForm = () => {
 
             {/* Social Media Fields */}
             <Grid container lg={12} sm={12} md={12} spacing={3}>
-              <Grid item xs={12} sm={4}>
+              <Grid item xs={12} sm={3}>
                 <TextField
                   label="Facebook URL"
                   {...register('facebook')}
@@ -235,7 +238,7 @@ const CompanyInfoForm = () => {
                   }}
                 />
               </Grid>
-              <Grid item xs={12} sm={4}>
+              <Grid item xs={12} sm={3}>
                 <TextField
                   label="Twitter URL"
                   {...register('twitter')}
@@ -252,7 +255,7 @@ const CompanyInfoForm = () => {
                   }}
                 />
               </Grid>
-              <Grid item xs={12} sm={4}>
+              <Grid item xs={12} sm={3}>
                 <TextField
                   label="Instagram URL"
                   {...register('instagram')}
@@ -264,6 +267,24 @@ const CompanyInfoForm = () => {
                     startAdornment: (
                       <InputAdornment position="start">
                         <InstagramIcon />
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+              </Grid>
+
+               <Grid item xs={12} sm={3}>
+                <TextField
+                  label="youTube URL"
+                  {...register('youTube')}
+                  fullWidth
+                  disabled={isSubmitting}
+                  error={!!errors.youTube}
+                  helperText={errors.youTube?.message}
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <YouTubeIcon />
                       </InputAdornment>
                     ),
                   }}

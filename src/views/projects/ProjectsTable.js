@@ -94,9 +94,9 @@ const handleClick = (event, project) => {
               <TableCell>{Projects.briefSummary}</TableCell>
               <TableCell>{Projects.briefSummary_pashto}</TableCell>
               <TableCell>{Projects.briefSummary_dari}</TableCell>
-              <TableCell>{DescriptionComponent(Projects.FullDescription)}</TableCell>
-              <TableCell>{DescriptionComponent(Projects.FullDescription_pashto)}</TableCell>
-              <TableCell>{DescriptionComponent(Projects.FullDescription_dari)}</TableCell>
+              <TableCell><DescriptionComponent description={Projects.FullDescription} maxLength={100} /></TableCell>
+              <TableCell><DescriptionComponent description={Projects.FullDescription_pashto} maxLength={100} /></TableCell>
+              <TableCell><DescriptionComponent description={Projects.FullDescription_dari} maxLength={100} /></TableCell>
               <TableCell>{Projects.Client}</TableCell>
               <TableCell>{Projects.Client_pashto}</TableCell>
               <TableCell>{Projects.Client_dari}</TableCell>
