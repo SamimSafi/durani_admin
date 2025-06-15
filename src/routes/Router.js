@@ -81,6 +81,7 @@ const ContentForm = lazy(() => import('../views/content/ContentForm'));
 
 const SloganList = lazy(() => import('../views/slogan/SloganList'));
 const SloganForm = lazy(() => import('../views/slogan/SloganForm'));
+const SloganImageForm = lazy(() => import('../views/slogan/SloganImageForm'));
 
 const ContactList = lazy(() => import('../views/contact/ContactList'));
 const basePath = import.meta.env.VITE_BASE_PATH || '/';
@@ -167,6 +168,7 @@ const Router = [
           { path: '/slogan', element: <SloganList /> },
           { path: '/slogan/create', element: <SloganForm /> },
           { path: '/slogan/edit/:id', element: <SloganForm /> },
+          { path: '/slogan/:id/image', element: <SloganImageForm /> },
           { path: '*', element: <Navigate to="/auth/404" /> },
         ],
       },

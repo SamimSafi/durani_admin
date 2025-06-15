@@ -10,7 +10,7 @@ import {
   Paper,
   TableSortLabel,
 } from '@mui/material';
-import { Delete, Edit } from '@mui/icons-material';
+import { Delete, Edit, Image  } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 
 const SloganTable = ({
@@ -64,6 +64,12 @@ const SloganTable = ({
                 >
                   <Delete />
                 </IconButton>
+                 <IconButton
+                    onClick={() => navigate(`/slogan/${Slogan.id}/image`)}
+                    color="secondary"
+                  >
+                    <Image />
+                  </IconButton>
               </TableCell>
             </TableRow>
           ))}

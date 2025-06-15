@@ -843,6 +843,16 @@ const SloganAPI = {
     const response = await axiosInstance.get(`/slogans/${SloganId}`);
     return response.data;
   },
+  updateSloganImage: async (id, logoFile) => {
+    const formData = new FormData();
+    formData.append('image', logoFile);
+    const response = await axiosInstance.post(`/slogans/${id}/image`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    return response.data;
+  },
 };
 
 // Centralized agent exporting all resource APIs

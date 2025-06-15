@@ -52,6 +52,24 @@ createSlogan: async (SloganData) => {
     }
   },
 
+  updateSloganImage: async (id, logoFile) => {
+    set({ loading: true, error: null });
+    try {
+      const updatedSlogan = await agent.Slogan.updateSloganImage(id, logoFile);
+      set((state) => ({
+        Slogan: state.Slogan.map((Slogan) =>
+          Slogan.id === id ? { ...Slogan, imagePath: updatedSlogan.imagePath } : Slogan
+        ),
+        loading: false,
+      }));
+      return updatedSlogan;
+    } catch (error) {
+      set({ error: error.message, loading: false });
+      toast.error('Failed to update Slogan Image.');
+      throw error;
+    }
+  },
+
   deleteSlogan: async (id) => {
     set({ loading: true, error: null });
     try {
