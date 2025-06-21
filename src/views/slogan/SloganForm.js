@@ -104,8 +104,8 @@ const SloganForm = () => {
               <MenuItem value="Home">Home</MenuItem>
               <MenuItem value="About_us">About Us</MenuItem>
               <MenuItem value="Services">Services</MenuItem>
-              <MenuItem value="Products">Products</MenuItem>
               <MenuItem value="Projects">Projects</MenuItem>
+              <MenuItem value="Products">Products</MenuItem>
             </TextField>
           )}
         />

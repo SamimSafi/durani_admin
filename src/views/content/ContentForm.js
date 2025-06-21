@@ -112,13 +112,15 @@ const ContentForm = () => {
 
   // Category options
   const categoryOptions = [
+    { value: 'CORE_VALUE', label: 'CORE_VALUE' },
+    { value: 'VISION', label: 'VISION' },
+    { value: 'MISSION', label: 'MISSION' },
     { value: 'ANNOUNCEMENTS', label: 'ANNOUNCEMENTS' },
     { value: 'AWARDS', label: 'AWARDS' },
     { value: 'SUSTAINABILITY', label: 'SUSTAINABILITY' },
     { value: 'NEWS', label: 'NEWS' },
     { value: 'ORGANIZATION_CHART', label: 'ORGANIZATION_CHART' },
   ];
-
   return (
     <Card sx={{ p: 3, width: '100%', mx: 'auto', maxWidth: 1200 }}>
       <Box sx={{ width: '100%' }}>
